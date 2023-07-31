@@ -8,9 +8,11 @@ public class WorkWithStrings {
     }
 
     public int findSymbolOccurance(String line, char symbol) {
-        int symbolindaex = -1;
-        symbolindaex = line.indexOf(symbol);
-        return symbolindaex;
+        int count = 0;
+        for (var i = 0; i < line.length(); i++)
+            if (line.charAt(i) == symbol)
+                count++;
+        return count;
     }
 
     public int findWordPosition(String source, String target) {
@@ -29,29 +31,18 @@ public class WorkWithStrings {
 
     public boolean isPalindrome(String source) {
         String reverse = stringReverse(source);
-        if (reverse.toUpperCase().equals(source.toUpperCase()))
-            return true;
-        else
-            return false;
+        return reverse.toUpperCase().equals(source.toUpperCase());
     }
 
-    public int tryGuesWord(String[] words, int index, String word) {
-        if (words[index].toUpperCase().equals(word.toUpperCase()))
-            return -1;
-        else {
-            showingLetters++;
-        }
-        return showingLetters;
+    public boolean wordСheck(String[] words, int index, String word) {
+        return words[index].toUpperCase().equals(word.toUpperCase());
     }
 
-    public String getPartOfWord(String[] words, int index,int showingLetters) {
-        String partOfWord = "";
-        for (var i = 0; i < showingLetters; i++) {
-            partOfWord += words[index].charAt(i);
-        }
-        for (var i = showingLetters + 1; i <= 15; i++) {
-            partOfWord += "#";
-        }
-        return partOfWord;
+    public String updateDisplayedWord(String[] words, int index, String word, String displayedWord) {
+        for (var i = 0; i < word.length(); i++)
+            if (i < words[index].length())
+                if (words[index].charAt(i) == word.charAt(i))
+                    displayedWord = displayedWord.substring(0, i) + words[index].charAt(i) + displayedWord.substring(i + 1);
+        return displayedWord;
     }
 }

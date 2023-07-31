@@ -9,8 +9,8 @@ class WorkWithStringsTest {
     @Test
     void findSymbolOccurance() {
         WorkWithStrings workWithStrings = new WorkWithStrings();
-        int index = workWithStrings.findSymbolOccurance("Apple", 'l');
-        assertEquals(3, index);
+        int count = workWithStrings.findSymbolOccurance("Apple", 'p');
+        assertEquals(2, count);
     }
 
     @Test
@@ -35,21 +35,22 @@ class WorkWithStringsTest {
     }
 
     @Test
-    void tryGuesWord() {
+    void wordСheck() {
         WorkWithStrings workWithStrings = new WorkWithStrings();
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry",
                 "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", " pea", "peanut",
                 "pear", "pepper", "pineapple", "pumpkin", "potato"};
-        int result = workWithStrings.tryGuesWord(words, 13, "Kiwi");
-        assertEquals(-1, result);
+        boolean result = workWithStrings.wordСheck(words, 13, "Kiwi");
+        assertEquals(true, result);
     }
+
     @Test
-    void getPartOfWord(){
+    void updateDisplayedWord() {
         WorkWithStrings workWithStrings = new WorkWithStrings();
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry",
                 "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", " pea", "peanut",
                 "pear", "pepper", "pineapple", "pumpkin", "potato"};
-        String result = workWithStrings.getPartOfWord(words, 13, 2);
-        assertEquals("ki#############", result);
+        String result = workWithStrings.updateDisplayedWord(words, 13, "kawa","###############");
+        assertEquals("k#w############", result);
     }
 }
