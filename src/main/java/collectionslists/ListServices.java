@@ -35,12 +35,12 @@ public class ListServices {
         return unigList;
     }
 
-    public String calcOccurance(List<String> list) {
-        String string = "";
+    public List<String> calcOccurance(List<String> list) {
+        List<String> listString =new ArrayList<>();
         List<String> uniqStringList = findUniqueString(list);
         for (String el : uniqStringList)
-            string += el + ": " + countOccurance(list, el) + "\n";
-        return string;
+            listString.add(el + ": " + countOccurance(list, el));
+        return listString;
     }
 
     public List<Word> findOccurance(List<String> list) {

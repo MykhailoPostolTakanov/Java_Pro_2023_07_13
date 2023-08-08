@@ -3,6 +3,7 @@ package phonebook;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Record {
     private String name = "";
@@ -27,6 +28,19 @@ public class Record {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Record record = (Record) o;
+        return Objects.equals(name, record.name) && Objects.equals(numbers, record.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, numbers);
     }
 
     @Override

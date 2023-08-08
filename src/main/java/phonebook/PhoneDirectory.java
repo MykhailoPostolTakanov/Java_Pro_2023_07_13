@@ -8,15 +8,20 @@ public class PhoneDirectory {
     private List<Record> records = new ArrayList<Record>();
 
     public PhoneDirectory(List<Record> records) {
-        this.records = records;
+        this.records.addAll(records);
     }
 
-    public List<Record> getRecords() {
+    protected List<Record> getRecords() {
         return records;
     }
 
     public void setRecords(List<Record> records) {
         this.records = records;
+    }
+
+    public List<Record> add(Record record) {
+        this.records.add(record);
+        return records;
     }
 
     public Record find(String name) {

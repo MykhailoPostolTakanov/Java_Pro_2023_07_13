@@ -53,9 +53,9 @@ class ListServicesTest {
     void calcOccurance() {
         String[] wordsArray = {"apple", "orange", "lemon", "banana", "banana", "lemon", "broccoli", "lemon", "orange",
                 "garlic", "apple", "melon", "melon", "apple", "mango", "banana", "nut", "orange", "pea", "orange"};
-        String expected = "apple: 3\norange: 4\nlemon: 3\nbanana: 3\nbroccoli: 1\ngarlic: 1\nmelon: 2\nmango: 1\nnut: 1\npea: 1\n";
+        List<String> expected = List.of("apple: 3","orange: 4","lemon: 3","banana: 3","broccoli: 1","garlic: 1","melon: 2","mango: 1","nut: 1","pea: 1");
         ListServices listServices = new ListServices();
-        String calcOccurance = listServices.calcOccurance(Arrays.asList(wordsArray));
+        List<String> calcOccurance = listServices.calcOccurance(Arrays.asList(wordsArray));
         assertEquals(expected, calcOccurance);
     }
 
@@ -77,6 +77,6 @@ class ListServicesTest {
         //String expected = ": 3\n : 4\n : 3\n : 3\n : 1\n : 1\n melon: 2\n mango: 1\n nut: 1\n pea: 1\n";
         ListServices listServices = new ListServices();
         List<Word> findOccurance = listServices.findOccurance(Arrays.asList(wordsArray));
-        assertEquals(expected.toString(), findOccurance.toString());
+        assertEquals(expected, findOccurance);
     }
 }
