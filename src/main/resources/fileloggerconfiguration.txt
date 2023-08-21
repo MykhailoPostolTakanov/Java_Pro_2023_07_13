@@ -1,0 +1,4 @@
+FILE: logs/
+LEVEL: INFO
+MAX-SIZE: 4096
+FORMAT: [%s][%s] Повідомлення: [%s]
