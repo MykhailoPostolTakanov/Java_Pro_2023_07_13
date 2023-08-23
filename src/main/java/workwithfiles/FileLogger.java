@@ -16,26 +16,15 @@ public class FileLogger implements Logger {
     public void debug(String message) throws IOException {
         if (config.getLevel().equals(LoggingLevel.INFO))
             return;
-        String logText = getFormatedText(message);
-        Path path = Path.of(config.getPath());
-        File file = path.toFile();
-        if (!file.exists())
-            file.createNewFile();
-        if (file.length() > config.getMaxfilesize()) {
-            setNewPath();
-            path = Path.of(config.getPath());
-            file = path.toFile();
-            file.createNewFile();
-        }
-        try (var out = new OutputStreamWriter(new FileOutputStream(config.getPath(), true))) {
-            out.append(logText + "\n");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        log(message);
     }
 
     @Override
     public void info(String message) throws IOException {
+        log(message);
+    }
+
+    private void log(String message) throws IOException {
         String logText = getFormatedText(message);
         Path path = Path.of(config.getPath());
         File file = path.toFile();
