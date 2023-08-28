@@ -11,20 +11,20 @@ class BoxTest {
 
     @Test
     void getList() {
-        Box box = new Box();
+        Box<Apple> box = new Box();
         Apple apple1 = new Apple();
         Apple apple2 = new Apple();
         box.add(apple1);
         box.add(apple2);
-        List expected = new LinkedList();
+        List<Apple> expected = new LinkedList();
         expected.add(apple1);
         expected.add(apple2);
-        assertEquals(expected, box.getList());
+        assertEquals(expected, box.getItems());
     }
 
     @Test
     void add() {
-        Box box = new Box();
+        Box<Apple> box = new Box();
         Apple apple1 = new Apple();
         Apple apple2 = new Apple();
         box.add(apple1);
@@ -34,19 +34,19 @@ class BoxTest {
 
     @Test
     void testAdd() {
-        Box box = new Box();
+        Box<Apple> box = new Box();
         Apple apple1 = new Apple();
         Apple apple2 = new Apple();
-        List apples = new LinkedList();
+        List<Apple> apples = new LinkedList();
         apples.add(apple1);
         apples.add(apple2);
-        List result = box.add(apples);
+        List<Apple> result = box.add(apples);
         assertEquals(apples, result);
     }
 
     @Test
     void getWeight() {
-        Box box = new Box();
+        Box<Apple> box = new Box();
         Apple apple1 = new Apple();
         Apple apple2 = new Apple();
         Apple apple3 = new Apple();
@@ -58,8 +58,8 @@ class BoxTest {
 
     @Test
     void compare() {
-        Box box1 = new Box();
-        Box box2 = new Box();
+        Box<Apple> box1 = new Box();
+        Box<Orange> box2 = new Box();
         Apple apple1 = new Apple();
         Apple apple2 = new Apple();
         Apple apple3 = new Apple();
@@ -76,8 +76,8 @@ class BoxTest {
 
     @Test
     void merge() {
-        Box box1 = new Box();
-        Box box2 = new Box();
+        Box<Apple> box1 = new Box();
+        Box<Apple> box2 = new Box();
         Apple apple1 = new Apple();
         Apple apple2 = new Apple();
         Apple apple3 = new Apple();
@@ -87,12 +87,12 @@ class BoxTest {
         box2.add(apple2);
         box2.add(apple3);
         box1.merge(box2);
-        List expected = new LinkedList();
+        List<Apple> expected = new LinkedList();
         expected.add(apple1);
         expected.add(apple2);
         expected.add(apple3);
         expected.add(apple2);
         expected.add(apple3);
-        assertEquals(expected, box1.getList());
+        assertEquals(expected, box1.getItems());
     }
 }
