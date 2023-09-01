@@ -11,9 +11,8 @@ class ArrayInitializerTest {
         double a = Math.random();
         double[] array = {a, a, a, a, a, a, a, a, a, a};
         ArrayInitializer.init(array);
-        double[] arr = ArrayInitializer.getArr();
-        for (int i = 0; i < arr.length / 2; i++) {
-            assertEquals(arr[i], arr[arr.length / 2 + i]);
+        for (int i = 0; i < array.length / 2; i++) {
+            assertEquals(array[i], array[array.length / 2 + i]);
         }
     }
 }

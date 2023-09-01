@@ -6,7 +6,9 @@ public class Main {
         System.out.println(a);
         double[] array = {a, a, a, a, a, a, a, a, a, a};
         ArrayInitializer.init(array);
-        for (double d : ArrayInitializer.getArr())
+        System.out.println("--------------");
+        for (double d : array)
             System.out.println(d);
+        System.out.println("--------------");
     }
 }
