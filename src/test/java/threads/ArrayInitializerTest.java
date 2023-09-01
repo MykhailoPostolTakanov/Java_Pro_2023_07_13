@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ArrayInitializerTest {
 
     @Test
-    void init() throws InterruptedException {
+    void init() {
         double a = Math.random();
         double[] array = {a, a, a, a, a, a, a, a, a, a};
         ArrayInitializer.init(array);

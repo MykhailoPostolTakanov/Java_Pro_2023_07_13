@@ -7,30 +7,34 @@ public class ArrayInitializer {
         return arr;
     }
 
-    public static void init(double[] array) throws InterruptedException {
-        if (array.length % 2 != 0)
-            return;
-        arr = new double[array.length];
+    public static void init(double[] array) {
+        try {
+            if (array.length % 2 != 0)
+                return;
+            arr = new double[array.length];
 
-        Thread firstArrayThread = new Thread(() -> {
-            System.out.println("Start firstArrayThread");
-            mathArray(array, true);
-            System.out.println("End firstArrayThread");
-        });
+            Thread firstArrayThread = new Thread(() -> {
+                System.out.println("Start firstArrayThread");
+                mathArray(array, true);
+                System.out.println("End firstArrayThread");
+            });
 
-        Thread secondArrayThread = new Thread(() -> {
-            System.out.println("Start secondArrayThread");
-            mathArray(array, false);
-            System.out.println("End secondArrayThread");
-        });
+            Thread secondArrayThread = new Thread(() -> {
+                System.out.println("Start secondArrayThread");
+                mathArray(array, false);
+                System.out.println("End secondArrayThread");
+            });
 
-        firstArrayThread.start();
-        secondArrayThread.start();
+            firstArrayThread.start();
+            secondArrayThread.start();
 
-        firstArrayThread.join();
-        secondArrayThread.join();
+            firstArrayThread.join();
+            secondArrayThread.join();
 
-        mergeArray(array);
+            mergeArray(array);
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex.getMessage());
+        }
     }
 
     private static void mathArray(double[] array, boolean isFirstPart) {
