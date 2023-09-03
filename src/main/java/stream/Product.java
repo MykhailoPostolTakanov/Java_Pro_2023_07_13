@@ -37,14 +37,25 @@ public class Product {
 
     @Override
     public boolean equals(Object o) {
+        double epsilon = 0.000001d;
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Double.compare(product.price, price) == 0 && discount == product.discount && category == product.category && Objects.equals(created, product.created);
+        return Math.abs(product.price - price) < epsilon && discount == product.discount && category == product.category && Objects.equals(created, product.created);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(category, price, discount, created);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "category=" + category +
+                ", price=" + price +
+                ", discount=" + discount +
+                ", created=" + created +
+                '}';
     }
 }
