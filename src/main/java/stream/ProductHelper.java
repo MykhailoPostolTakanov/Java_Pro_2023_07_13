@@ -18,7 +18,8 @@ public class ProductHelper {
         return list.stream()
                 .filter(product -> product.getCategory().equals(category))
                 .filter(Product::getDiscount)
-                .peek(product -> product.setPrice((product.getPrice() * (100 - discount)) / 100))
+                .map(product -> new Product(product.getCategory(), (product.getPrice() * (100 - discount)) / 100, product.getDiscount(), product.getCreated()))
+                //.peek(product -> product.setPrice((product.getPrice() * (100 - discount)) / 100))
                 .toList();
     }
 
