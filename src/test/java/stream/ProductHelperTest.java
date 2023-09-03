@@ -2,6 +2,7 @@ package stream;
 
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,12 +25,13 @@ class ProductHelperTest {
 
     @Test
     void filteredByCategoryAndSetDiscount() {
-        Product product1 = new Product(Category.BOOK, 120, false);
-        Product product2 = new Product(Category.BOOK, 260, true);
-        Product product2Discount = new Product(Category.BOOK, 234, true);
-        Product product3 = new Product(Category.COPYBOOK, 120, true);
-        Product product4 = new Product(Category.BOOK, 1200, true);
-        Product product4Discount = new Product(Category.BOOK, 1080, true);
+        LocalDateTime curDate = LocalDateTime.now();
+        Product product1 = new Product(Category.BOOK, 120, false, curDate);
+        Product product2 = new Product(Category.BOOK, 260, true, curDate);
+        Product product2Discount = new Product(Category.BOOK, 234, true, curDate);
+        Product product3 = new Product(Category.COPYBOOK, 120, true, curDate);
+        Product product4 = new Product(Category.BOOK, 1200, true, curDate);
+        Product product4Discount = new Product(Category.BOOK, 1080, true, curDate);
         List<Product> products = List.of(product1, product2, product3, product4);
         products = ProductHelper.filteredByCategoryAndSetDiscount(products, Category.BOOK, 10);
         List<Product> expected = List.of(product2Discount, product4Discount);

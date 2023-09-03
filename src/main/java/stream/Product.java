@@ -7,12 +7,19 @@ public class Product {
     private final Category category;
     private double price;
     private final boolean discount;
-    private final LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created = LocalDateTime.now();
 
     public Product(Category category, double price, boolean discount) {
         this.category = category;
         this.price = price;
         this.discount = discount;
+    }
+
+    public Product(Category category, double price, boolean discount, LocalDateTime created) {
+        this.category = category;
+        this.price = price;
+        this.discount = discount;
+        this.created = created;
     }
 
     public Category getCategory() {
