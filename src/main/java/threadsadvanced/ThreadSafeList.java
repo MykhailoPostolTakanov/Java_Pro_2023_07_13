@@ -22,13 +22,13 @@ public class ThreadSafeList<T> {
     }
 
     public T remove(int index) {
-        Lock readLock = lock.writeLock();
-        readLock.lock();
+        Lock writeLock = lock.writeLock();
+        writeLock.lock();
 
         try {
             return list.remove(index);
         } finally {
-            readLock.unlock();
+            writeLock.unlock();
         }
     }
 
