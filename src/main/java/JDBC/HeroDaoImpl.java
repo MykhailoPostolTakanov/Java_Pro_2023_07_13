@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.sql.DataSource;
 
-@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
+@RequiredArgsConstructor(access = AccessLevel.PUBLIC)
 public class HeroDaoImpl implements HeroDao {
     private final DataSource dataSource;
 
