@@ -17,7 +17,7 @@ public class HeroMovieService {
         heroMovies.put("Amazo", List.of("Misha Movie 5"));
     }
 
-    public static List<String> getPlayedIn(String heroName) {
+    public List<String> getPlayedIn(String heroName) {
         return heroMovies.get(heroName);
     }
 }

@@ -10,12 +10,12 @@ import java.util.List;
 public class HeroFabric implements Fabric {
     @Override
     public HeroService createService(DataSource dataSource) {
-        return new HeroService(new HeroDaoImpl(createDataSource()));
+        return new HeroService(new HeroDaoImpl(createDataSource()), new HeroMovieService());
     }
 
     @Override
     public HeroService createService(List<Hero> heroes) {
-        return new HeroService(new DummyHeroDao(heroes));
+        return new HeroService(new DummyHeroDao(heroes), new HeroMovieService());
     }
 
     private static DataSource createDataSource() {
