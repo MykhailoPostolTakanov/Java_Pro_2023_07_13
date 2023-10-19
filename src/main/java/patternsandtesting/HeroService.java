@@ -1,5 +1,6 @@
 package patternsandtesting;
 
+import JDBC.Hero;
 import JDBC.HeroDao;
 
 import java.util.List;
@@ -17,5 +18,9 @@ public class HeroService {
         return heroDao.findAll().stream()
                 .map(hero -> new HeroDto(hero.getName(), heroMovieService.getPlayedIn(hero.getName())))
                 .toList();
+    }
+
+    public List<Hero> getHeroesByName(String name) {
+        return heroDao.findByName(name);
     }
 }
