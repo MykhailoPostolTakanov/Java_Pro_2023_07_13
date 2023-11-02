@@ -1,11 +1,12 @@
 package restapi;
 
-import JDBC.HeroDao;
 import JDBC.HeroDaoImpl;
 import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import patternsandtesting.HeroMovieService;
+import patternsandtesting.HeroService;
 
 import javax.sql.DataSource;
 
@@ -16,10 +17,9 @@ public class RestApplication {
     }
 
     @Bean
-    public HeroDao heroDao() {
-        return new HeroDaoImpl(createDataSource());
+    public HeroService heroService() {
+        return new HeroService(new HeroDaoImpl(createDataSource()), new HeroMovieService());
     }
-
 
     private static DataSource createDataSource() {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();

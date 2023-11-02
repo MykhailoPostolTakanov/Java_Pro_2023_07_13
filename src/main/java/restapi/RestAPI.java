@@ -1,9 +1,11 @@
 package restapi;
 
 import JDBC.Hero;
-import JDBC.HeroDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import patternsandtesting.HeroDto;
+import patternsandtesting.HeroEntity;
+import patternsandtesting.HeroService;
 
 import java.util.List;
 
@@ -11,35 +13,32 @@ import java.util.List;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 public class RestAPI {
-    private final HeroDao heroDao;
+    private final HeroService heroService;
 
     @GetMapping("/heroes")
-    public List<Hero> getAllHeroes() {
-        return heroDao.findAll();
+    public List<HeroDto> getAllHeroes() {
+        return heroService.getHeroes();
     }
 
     @GetMapping("/heroes/{id}")
-    public Hero getHeroesByID(@PathVariable Long id) {
-        return heroDao.findAll().stream()
-                .filter(hero -> hero.getId().equals(id))
+    public HeroEntity getHeroesByID(@PathVariable Long id) {
+        return heroService.getHeroesByID(id).stream()
                 .findFirst()
                 .orElseThrow();
     }
 
     @PostMapping("/heroes")
-    public Hero createHero(@RequestBody Hero hero) {
-        heroDao.create(hero);
-        return heroDao.findByName(hero.getName()).get(0);
+    public HeroEntity createHero(@RequestBody Hero hero) {
+        return heroService.createHero(hero);
     }
 
     @PutMapping("/heroes/{id}")
-    public Hero updateHero(@PathVariable Long id, @RequestBody Hero hero) {
-        heroDao.update(hero);
-        return this.getHeroesByID(id);
+    public HeroEntity updateHero(@PathVariable Long id, @RequestBody Hero hero) {
+        return heroService.updateHero(hero);
     }
 
     @DeleteMapping("/heroes/{id}")
     public void deleteHeroes(@PathVariable Long id) {
-        heroDao.delete(id);
+        heroService.deleteHero(id);
     }
 }
