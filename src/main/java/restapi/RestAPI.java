@@ -4,7 +4,6 @@ import JDBC.Hero;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import patternsandtesting.HeroDto;
-import patternsandtesting.HeroEntity;
 import patternsandtesting.HeroService;
 
 import java.util.List;
@@ -21,19 +20,17 @@ public class RestAPI {
     }
 
     @GetMapping("/heroes/{id}")
-    public HeroEntity getHeroesByID(@PathVariable Long id) {
-        return heroService.getHeroesByID(id).stream()
-                .findFirst()
-                .orElseThrow();
+    public HeroDto getHeroesByID(@PathVariable Long id) {
+        return heroService.getHeroesByID(id);
     }
 
     @PostMapping("/heroes")
-    public HeroEntity createHero(@RequestBody Hero hero) {
+    public HeroDto createHero(@RequestBody Hero hero) {
         return heroService.createHero(hero);
     }
 
     @PutMapping("/heroes/{id}")
-    public HeroEntity updateHero(@PathVariable Long id, @RequestBody Hero hero) {
+    public HeroDto updateHero(@PathVariable Long id, @RequestBody Hero hero) {
         return heroService.updateHero(hero);
     }
 

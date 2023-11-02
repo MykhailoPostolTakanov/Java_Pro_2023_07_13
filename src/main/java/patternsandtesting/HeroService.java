@@ -16,7 +16,7 @@ public class HeroService {
 
     public List<HeroDto> getHeroes() {
         return heroDao.findAll().stream()
-                .map(hero -> new HeroDto(hero.getName(), heroMovieService.getPlayedIn(hero.getName())))
+                .map(this::fromHeroToHeroDTO)
                 .toList();
     }
 
@@ -24,25 +24,21 @@ public class HeroService {
         return heroDao.findByName(name);
     }
 
-    public List<HeroEntity> getHeroesByID(Long id) {
-        return heroDao.findByID(id).stream()
-                .map(this::fromHeroToHeroEntity)
-                .toList();
+    public HeroDto getHeroesByID(Long id) {
+        return fromHeroToHeroDTO(heroDao.findByID(id));
     }
 
-    public HeroEntity createHero(Hero hero) {
+    public HeroDto createHero(Hero hero) {
         heroDao.create(hero);
         return getHeroesByName(hero.getName()).stream()
-                .map(this::fromHeroToHeroEntity)
+                .map(this::fromHeroToHeroDTO)
                 .findFirst()
                 .orElseThrow();
     }
 
-    public HeroEntity updateHero(Hero hero) {
+    public HeroDto updateHero(Hero hero) {
         heroDao.update(hero);
-        return getHeroesByID(hero.getId()).stream()
-                .findFirst()
-                .orElseThrow();
+        return getHeroesByID(hero.getId());
     }
 
     public void deleteHero(Long id) {
@@ -51,5 +47,9 @@ public class HeroService {
 
     private HeroEntity fromHeroToHeroEntity(Hero hero) {
         return new HeroEntity(hero.getId(), hero.getName(), hero.getGender(), hero.getEyeColor(), hero.getRace(), hero.getHairColor(), hero.getHeight(), hero.getPublisher(), hero.getSkinColor(), hero.getAlignment(), hero.getWeight());
+    }
+
+    private HeroDto fromHeroToHeroDTO(Hero hero) {
+        return new HeroDto(hero.getName(), heroMovieService.getPlayedIn(hero.getName()));
     }
 }

@@ -23,10 +23,11 @@ public class DummyHeroDao implements HeroDao {
     }
 
     @Override
-    public List<Hero> findByID(Long id) {
+    public Hero findByID(Long id) {
         return db.stream()
                 .filter(hero -> hero.getId().equals(id))
-                .toList();
+                .findFirst()
+                .orElseThrow();
     }
 
     @Override

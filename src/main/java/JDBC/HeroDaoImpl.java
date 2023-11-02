@@ -38,12 +38,14 @@ public class HeroDaoImpl implements HeroDao {
     }
 
     @Override
-    public List<Hero> findByID(Long id) {
+    public Hero findByID(Long id) {
         var sql = "select * from hero where id = '" + id + "'";
         try (var connection = dataSource.getConnection();
              var statement = connection.createStatement()) {
             var result = statement.executeQuery(sql);
-            return mapHero(result);
+            return mapHero(result).stream()
+                    .findFirst()
+                    .orElseThrow();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
