@@ -38,6 +38,20 @@ public class HeroDaoImpl implements HeroDao {
     }
 
     @Override
+    public Hero findByID(Long id) {
+        var sql = "select * from hero where id = '" + id + "'";
+        try (var connection = dataSource.getConnection();
+             var statement = connection.createStatement()) {
+            var result = statement.executeQuery(sql);
+            return mapHero(result).stream()
+                    .findFirst()
+                    .orElseThrow();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public void create(Hero hero) {
         var sql = "insert into hero (name,gender,eyeColor,race,hairColor,height,publisher,skinColor,alignment,weight)" +
                 "values('" + hero.getName() + "','" + hero.getGender() + "','" + hero.getEyeColor() + "','" + hero.getRace() + "','" + hero.getHairColor() + "'," +

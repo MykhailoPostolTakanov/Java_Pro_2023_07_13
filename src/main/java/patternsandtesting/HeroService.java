@@ -16,11 +16,40 @@ public class HeroService {
 
     public List<HeroDto> getHeroes() {
         return heroDao.findAll().stream()
-                .map(hero -> new HeroDto(hero.getName(), heroMovieService.getPlayedIn(hero.getName())))
+                .map(this::fromHeroToHeroDTO)
                 .toList();
     }
 
     public List<Hero> getHeroesByName(String name) {
         return heroDao.findByName(name);
+    }
+
+    public HeroDto getHeroesByID(Long id) {
+        return fromHeroToHeroDTO(heroDao.findByID(id));
+    }
+
+    public HeroDto createHero(Hero hero) {
+        heroDao.create(hero);
+        return getHeroesByName(hero.getName()).stream()
+                .map(this::fromHeroToHeroDTO)
+                .findFirst()
+                .orElseThrow();
+    }
+
+    public HeroDto updateHero(Hero hero) {
+        heroDao.update(hero);
+        return getHeroesByID(hero.getId());
+    }
+
+    public void deleteHero(Long id) {
+        heroDao.delete(id);
+    }
+
+    private HeroEntity fromHeroToHeroEntity(Hero hero) {
+        return new HeroEntity(hero.getId(), hero.getName(), hero.getGender(), hero.getEyeColor(), hero.getRace(), hero.getHairColor(), hero.getHeight(), hero.getPublisher(), hero.getSkinColor(), hero.getAlignment(), hero.getWeight());
+    }
+
+    private HeroDto fromHeroToHeroDTO(Hero hero) {
+        return new HeroDto(hero.getName(), heroMovieService.getPlayedIn(hero.getName()));
     }
 }
