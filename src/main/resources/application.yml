@@ -1,0 +1,4 @@
+db.serverName=localhost
+db.dataBaseName=postgres
+db.login=hillel
+db.password=hillel
