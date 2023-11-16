@@ -10,7 +10,7 @@ import patternsandtesting.HeroService;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class RestApplication {
     public static void main(String[] args) {
         SpringApplication.run(RestApplication.class, args);

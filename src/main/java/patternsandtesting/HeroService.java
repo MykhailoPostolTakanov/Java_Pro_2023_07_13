@@ -50,6 +50,6 @@ public class HeroService {
     }
 
     private HeroDto fromHeroToHeroDTO(Hero hero) {
-        return new HeroDto(hero.getName(), heroMovieService.getPlayedIn(hero.getName()));
+        return new HeroDto(hero.getId(), hero.getName(), hero.getGender(), hero.getEyeColor(), hero.getRace(), hero.getHairColor(), hero.getHeight(), hero.getPublisher(), hero.getSkinColor(), hero.getAlignment(), hero.getWeight(), heroMovieService.getPlayedIn(hero.getName()));
     }
 }

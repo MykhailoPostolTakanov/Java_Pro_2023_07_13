@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:switch="${heroes}">
+    <h2 th:case="null">Heroes Not Found!</h2>
+    <div th:case="*">
+        <h2>Heroes</h2>
+        <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;flex-direction:row;">
+                <div>Name</div>
+                <div>Movies</div>
+                <div>Edit</div>
+            </div>
+            <div style="display:flex;flex-direction:row;" th:each="hero:${heroes}">
+                <div>${hero.name}</div>
+                <div>${hero.movies}</div>
+                <div><a th:href="@{/edit/{id}(id=${hero.id})}">Edit</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
