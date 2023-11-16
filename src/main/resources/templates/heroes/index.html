@@ -6,14 +6,14 @@
         <h2>Heroes</h2>
         <div style="display:flex;flex-direction:column;">
             <div style="display:flex;flex-direction:row;">
-                <div>Name</div>
-                <div>Movies</div>
-                <div>Edit</div>
+                <div style="width:100px;">Name</div>
+                <div style="width:100px;">Gender</div>
+                <div style="width:100px;">Edit</div>
             </div>
             <div style="display:flex;flex-direction:row;" th:each="hero:${heroes}">
-                <div>${hero.name}</div>
-                <div>${hero.movies}</div>
-                <div><a th:href="@{/edit/{id}(id=${hero.id})}">Edit</a></div>
+                <div style="width:100px;"><span th:text="${hero.name}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.gender}"></span></div>
+                <!--<div><a th:href="@{/edit/{id}(id=${hero.id})}">Edit</a></div>-->
             </div>
         </div>
     </div>

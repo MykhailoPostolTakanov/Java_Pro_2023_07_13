@@ -2,8 +2,8 @@
 <body>
 <p>Edit a hero:</p>
 <form action="/update"
-      th:action="@{/edit/{id}(id=${hero.id})}"
       th:object="${hero}"
+      th:action="@{/edit/{id}(id=${hero.id})}"
       method="post">
     <div style="display:flex;flex-direction:column;">
         <div style="display:flex;flex-direction:row;">

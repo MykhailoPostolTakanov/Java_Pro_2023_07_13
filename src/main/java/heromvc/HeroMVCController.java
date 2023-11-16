@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import patternsandtesting.HeroDto;
 import patternsandtesting.HeroService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -16,10 +19,10 @@ import patternsandtesting.HeroService;
 public class HeroMVCController {
     private final HeroService heroService;
 
-    @GetMapping
+    @GetMapping("/")
     public String heroes(Model model) {
-        model.addAttribute("Name", "Test");
         model.addAttribute("heroes", heroService.getHeroes());
+        System.out.println(model);
         return "heroes/index";
     }
 
