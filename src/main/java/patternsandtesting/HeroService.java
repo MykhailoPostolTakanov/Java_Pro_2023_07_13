@@ -41,6 +41,12 @@ public class HeroService {
         return getHeroesByID(hero.getId());
     }
 
+    public HeroDto updateHero(HeroDto heroDto) {
+        var hero = new Hero(heroDto.getId(), heroDto.getName(), heroDto.getGender(), heroDto.getEyeColor(), heroDto.getRace(), heroDto.getHairColor(), heroDto.getHeight(), heroDto.getPublisher(), heroDto.getSkinColor(), heroDto.getAlignment(), heroDto.getWeight());
+        heroDao.update(hero);
+        return getHeroesByID(hero.getId());
+    }
+
     public void deleteHero(Long id) {
         heroDao.delete(id);
     }
@@ -50,6 +56,6 @@ public class HeroService {
     }
 
     private HeroDto fromHeroToHeroDTO(Hero hero) {
-        return new HeroDto(hero.getName(), heroMovieService.getPlayedIn(hero.getName()));
+        return new HeroDto(hero.getId(), hero.getName(), hero.getGender(), hero.getEyeColor(), hero.getRace(), hero.getHairColor(), hero.getHeight(), hero.getPublisher(), hero.getSkinColor(), hero.getAlignment(), hero.getWeight(), heroMovieService.getPlayedIn(hero.getName()));
     }
 }

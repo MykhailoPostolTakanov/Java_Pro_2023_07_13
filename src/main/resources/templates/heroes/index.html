@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:switch="${heroes}">
+    <h2 th:case="null">Heroes Not Found!</h2>
+    <div th:case="*">
+        <h2>Heroes</h2>
+        <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;flex-direction:row;padding: 5px;">
+                <div style="width:100px;">Name</div>
+                <div style="width:100px;">Gender</div>
+                <div style="width:100px;">Eye Color</div>
+                <div style="width:100px;">Race</div>
+                <div style="width:100px;">Hair Color</div>
+                <div style="width:100px;">Height</div>
+                <div style="width:100px;">Publisher</div>
+                <div style="width:100px;">Skin Color</div>
+                <div style="width:100px;">Alignment</div>
+                <div style="width:100px;">Weight</div>
+                <div style="width:100px;">Edit</div>
+            </div>
+            <div style="display:flex;flex-direction:row;padding: 5px;" th:each="hero:${heroes}">
+                <div style="width:100px;"><span th:text="${hero.name}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.gender}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.eyeColor}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.race}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.hairColor}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.height}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.publisher}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.skinColor}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.alignment}"></span></div>
+                <div style="width:100px;"><span th:text="${hero.weight}"></span></div>
+                <div><a th:href="@{/edit/{id}(id=${hero.id})}">Edit</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

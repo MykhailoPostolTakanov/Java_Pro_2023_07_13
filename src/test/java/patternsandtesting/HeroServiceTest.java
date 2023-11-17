@@ -29,8 +29,8 @@ class HeroServiceTest {
 
         HeroService heroService = new HeroService(heroDao, heroMovieService);
         List<HeroDto> heroDtos = heroService.getHeroes();
-        var expected = List.of(new HeroDto("Misha Postol-Takanov", List.of("Misha Movie", "Misha Movie 2", "Misha Movie 4")),
-                new HeroDto("A-Bomb", List.of("Movie", "Movie 2", "Movie 3")));
+        var expected = List.of(new HeroDto(11L, "Misha Postol-Takanov", "Male", "Blue", "Human", "Balck", 1.76, "Ukraine", "White", "good", 74, List.of("Misha Movie", "Misha Movie 2", "Misha Movie 4")),
+                new HeroDto(13L, "A-Bomb", "Male", "yellow", "Human", "No Hair", 2.03, "Marvel Comics", "-", "good", 441, List.of("Movie", "Movie 2", "Movie 3")));
         assertEquals(expected, heroDtos);
     }
 }
