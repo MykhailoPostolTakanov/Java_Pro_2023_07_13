@@ -41,6 +41,12 @@ public class HeroService {
         return getHeroesByID(hero.getId());
     }
 
+    public HeroDto updateHero(HeroDto heroDto) {
+        var hero = new Hero(heroDto.getId(), heroDto.getName(), heroDto.getGender(), heroDto.getEyeColor(), heroDto.getRace(), heroDto.getHairColor(), heroDto.getHeight(), heroDto.getPublisher(), heroDto.getSkinColor(), heroDto.getAlignment(), heroDto.getWeight());
+        heroDao.update(hero);
+        return getHeroesByID(hero.getId());
+    }
+
     public void deleteHero(Long id) {
         heroDao.delete(id);
     }

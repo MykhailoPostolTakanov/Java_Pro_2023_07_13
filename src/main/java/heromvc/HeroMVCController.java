@@ -22,7 +22,6 @@ public class HeroMVCController {
     @GetMapping("/")
     public String heroes(Model model) {
         model.addAttribute("heroes", heroService.getHeroes());
-        System.out.println(model);
         return "heroes/index";
     }
 
@@ -33,8 +32,8 @@ public class HeroMVCController {
         return "heroes/edit";
     }
 
-    @PostMapping("/update")
-    public String update(Hero hero, Model model) {
+    @PostMapping("/edit/{id}")
+    public String update(@PathVariable("id") long id, HeroDto hero, Model model) {
         heroService.updateHero(hero);
         return "redirect:/";
     }

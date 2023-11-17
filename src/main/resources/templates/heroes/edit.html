@@ -6,119 +6,119 @@
       th:action="@{/edit/{id}(id=${hero.id})}"
       method="post">
     <div style="display:flex;flex-direction:column;">
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>Name</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{name}" id="name" placeholder="Name">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>Gender</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{gender}" id="gender" placeholder="Gender">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>EyeColor</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{eyeColor}" id="eyeColor" placeholder="EyeColor">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('eyeColor')}" th:errors="*{eyeColor}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>Race</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{race}" id="race" placeholder="Race">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('race')}" th:errors="*{race}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>HairColor</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{hairColor}" id="hairColor" placeholder="HairColor">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('hairColor')}" th:errors="*{hairColor}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>Height</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{height}" id="height" placeholder="Height">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('height')}" th:errors="*{height}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>Publisher</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{publisher}" id="publisher" placeholder="Publisher">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>SkinColor</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{skinColor}" id="skinColor" placeholder="SkinColor">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('skinColor')}" th:errors="*{skinColor}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>Alignment</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{alignment}" id="alignment" placeholder="Alignment">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('alignment')}" th:errors="*{alignment}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;">
                 <span>Weight</span>
             </div>
-            <div>
+            <div style="width:100px;">
                 <input type="text" th:field="*{weight}" id="weight" placeholder="Weight">
             </div>
-            <div>
+            <div style="width:100px;">
                 <span th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></span>
             </div>
         </div>
-        <div style="display:flex;flex-direction:row;">
-            <div></div>
-            <div>
+        <div style="display:flex;flex-direction:row;padding: 5px;">
+            <div style="width:100px;"></div>
+            <div style="width:100px;">
                 <input type="submit" value="Update">
             </div>
         </div>
