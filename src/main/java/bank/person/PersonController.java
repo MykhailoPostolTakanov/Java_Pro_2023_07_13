@@ -18,7 +18,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public PersonDTO getPerson(@PathVariable("/{id}") String id) {
+    public PersonDTO getPerson(@PathVariable("id") String id) {
         return personService.findByUID(id);
     }
 
@@ -28,12 +28,12 @@ public class PersonController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletePerson(@PathVariable("/{id}") String id) {
+    public void deletePerson(@PathVariable("id") String id) {
         personService.deletePerson(id);
     }
 
     @PutMapping("/{id}")
-    public PersonDTO updatePerson(@PathVariable("/{id}") String id, PersonDTO personDTO) {
+    public PersonDTO updatePerson(@PathVariable("id") String id, PersonDTO personDTO) {
         return personService.updatePerson(id, personDTO);
     }
 }

@@ -21,25 +21,32 @@ public class AccountService {
         this.personRepository = personRepository;
     }
 
-    public List<AccountDTO> findAll(Pageable pageable) {
-        return accountRepository.findAll(pageable).stream()
+    public List<AccountDTO> findAll(String person_uid, Pageable pageable) {
+        var person = getPersonByUid(person_uid);
+        return accountRepository.findAllByPersonid(person.getId(), pageable).stream()
                 .map(this::mapAccountToAccountDTO).toList();
     }
 
-    public AccountDTO findByUID(String uid) {
-        return mapAccountToAccountDTO(findAccountByUid(uid));
+    public AccountDTO findByUID(String person_uid, String uid) {
+        var person = getPersonByUid(person_uid);
+        return mapAccountToAccountDTO(findAccountByUidAndPersonid(uid, person.getId()));
     }
 
     private Account findAccountByUid(String uid) {
         return accountRepository.findByUid(uid).orElseThrow(() -> new RuntimeException("Account not Found"));
     }
 
-    public AccountDTO createAccount(AccountDTO accountDTO) {
+    private Account findAccountByUidAndPersonid(String uid, Long person_id) {
+        return accountRepository.findByUidAndPersonid(uid, person_id).orElseThrow(() -> new RuntimeException("Account not Found"));
+    }
+
+    public AccountDTO createAccount(String person_uid, AccountDTO accountDTO) {
+        var person = getPersonByUid(person_uid);
         return mapAccountToAccountDTO(accountRepository.save(Account.builder()
                 .uid(UUID.randomUUID().toString())
                 .iban(accountDTO.iban())
                 .balance(accountDTO.balance())
-                .person_id(1)
+                .personid(person.getId())
                 .build()));
     }
 
@@ -57,7 +64,11 @@ public class AccountService {
     }
 
     private AccountDTO mapAccountToAccountDTO(Account account) {
-        var person = personRepository.findById(account.getId()).orElseThrow(() -> new RuntimeException("Person Not Found"));
+        var person = personRepository.findById(account.getPersonid()).orElseThrow(() -> new RuntimeException("Person Not Found"));
         return new AccountDTO(account.getUid(), account.getIban(), account.getBalance(), person.getUid());
+    }
+
+    private Person getPersonByUid(String person_uid) {
+        return personRepository.findByUid(person_uid).orElseThrow(() -> new RuntimeException("Person Not Found"));
     }
 }
