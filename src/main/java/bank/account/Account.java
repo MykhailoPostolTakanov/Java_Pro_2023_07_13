@@ -1,15 +1,15 @@
 package bank.account;
 
 import bank.entity.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Table;
+import bank.person.Person;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +22,8 @@ public class Account extends BaseEntity {
     private String uid;
     private String iban;
     private int balance;
-    @Column(name = "person_id", nullable = false)
-    private Long personid;
+    /*@Column(name = "person_id", nullable = false)
+    private Long personId;*/
+    @ManyToOne
+    private Person person;
 }

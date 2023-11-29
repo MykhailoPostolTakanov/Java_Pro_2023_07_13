@@ -1,5 +1,7 @@
 package bank.person;
 
+import bank.account.Account;
+import bank.account.AccountDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -48,6 +50,12 @@ public class PersonService {
     }
 
     private PersonDTO mapPersonToPersonDTO(Person person) {
-        return new PersonDTO(person.getUid(), person.getName());
+        return new PersonDTO(person.getUid(), person.getName(), person.getAccounts().stream()
+                .map(this::mapAccountToAccountDTO)
+                .toList());
+    }
+
+    private AccountDTO mapAccountToAccountDTO(Account account) {
+        return new AccountDTO(account.getUid(), account.getIban(), account.getBalance(), null);
     }
 }

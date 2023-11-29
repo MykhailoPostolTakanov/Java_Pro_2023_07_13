@@ -13,27 +13,27 @@ public class AccountController {
     private final AccountService accountService;
 
     @GetMapping
-    public List<AccountDTO> findAll(@PathVariable("id") String person_id, Pageable pageable) {
-        return accountService.findAll(person_id, pageable);
+    public List<AccountDTO> findAll(@PathVariable("id") String personId, Pageable pageable) {
+        return accountService.findAll(personId, pageable);
     }
 
     @GetMapping("/{id-account}")
-    public AccountDTO getAccount(@PathVariable("id") String person_id, @PathVariable("id-account") String id) {
-        return accountService.findByUID(person_id, id);
+    public AccountDTO getAccount(@PathVariable("id") String personId, @PathVariable("id-account") String id) {
+        return accountService.findByUID(personId, id);
     }
 
     @PostMapping
-    public AccountDTO createAccount(@PathVariable("id") String person_id, @RequestBody AccountDTO accountDTO) {
-        return accountService.createAccount(person_id, accountDTO);
+    public AccountDTO createAccount(@PathVariable("id") String personId, @RequestBody AccountDTO accountDTO) {
+        return accountService.createAccount(personId, accountDTO);
     }
 
-    @DeleteMapping("/{id-account}")
-    public void deleteAccount(@PathVariable("id-account") String id) {
+    @DeleteMapping("/{account_id}")
+    public void deleteAccount(@PathVariable("account_id") String id) {
         accountService.deleteAccount(id);
     }
 
-    @PutMapping("/{id-account}")
-    public AccountDTO updateAccount(@PathVariable("id-account") String id, AccountDTO accountDTO) {
+    @PutMapping("/{account_id}")
+    public AccountDTO updateAccount(@PathVariable("account_id") String id, AccountDTO accountDTO) {
         return accountService.updateAccount(id, accountDTO);
     }
 }

@@ -1,9 +1,12 @@
 package bank.person;
 
+import bank.account.Account;
 import bank.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,8 +18,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class Person extends BaseEntity {
     private String uid;
     private String name;
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @OneToMany(mappedBy = "person")
+    private List<Account> accounts;
 }

@@ -1,9 +1,11 @@
 package bank.account;
 
+import bank.person.PersonDTO;
+
 public record AccountDTO(
         String id,
         String iban,
         int balance,
-        String person_id
+        PersonDTO person
 ) {
 }

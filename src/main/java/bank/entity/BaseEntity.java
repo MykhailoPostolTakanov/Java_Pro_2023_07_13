@@ -20,11 +20,9 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_at")
     @CreatedDate
     private Instant createdAt;
 
-    @Column(name = "updated_at")
     @LastModifiedDate
     private Instant updatedAt;
 
