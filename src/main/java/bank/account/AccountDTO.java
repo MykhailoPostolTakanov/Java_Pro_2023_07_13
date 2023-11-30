@@ -1,11 +1,12 @@
 package bank.account;
 
-import bank.person.PersonDTO;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record AccountDTO(
         String id,
         String iban,
         int balance,
-        PersonDTO person
+        @JsonProperty("person_id")
+        String personId
 ) {
 }

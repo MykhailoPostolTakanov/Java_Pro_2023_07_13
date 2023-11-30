@@ -1,7 +1,6 @@
 package bank.account;
 
 import bank.person.Person;
-import bank.person.PersonDTO;
 import bank.person.PersonRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Pageable;
@@ -63,14 +62,10 @@ public class AccountService {
     }
 
     private AccountDTO mapAccountToAccountDTO(Account account) {
-        return new AccountDTO(account.getUid(), account.getIban(), account.getBalance(), mapPersonToPersonDTO(account.getPerson()));
+        return new AccountDTO(account.getUid(), account.getIban(), account.getBalance(), account.getPerson().getUid());
     }
 
     private Person getPersonByUid(String personUid) {
         return personRepository.findByUid(personUid).orElseThrow(() -> new RuntimeException("Person Not Found"));
-    }
-
-    private PersonDTO mapPersonToPersonDTO(Person person) {
-        return new PersonDTO(person.getUid(), person.getName(), null);
     }
 }

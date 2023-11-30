@@ -34,6 +34,7 @@ public class PersonService {
         return mapPersonToPersonDTO(personRepository.save(Person.builder()
                 .name(personDTO.name())
                 .uid(UUID.randomUUID().toString())
+                .accounts(List.of())
                 .build()));
     }
 
@@ -56,6 +57,6 @@ public class PersonService {
     }
 
     private AccountDTO mapAccountToAccountDTO(Account account) {
-        return new AccountDTO(account.getUid(), account.getIban(), account.getBalance(), null);
+        return new AccountDTO(account.getUid(), account.getIban(), account.getBalance(), account.getPerson().getUid());
     }
 }
