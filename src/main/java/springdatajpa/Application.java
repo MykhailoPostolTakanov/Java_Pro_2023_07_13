@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
-@SpringBootApplication
+//@SpringBootApplication
 @AllArgsConstructor
 public class Application implements CommandLineRunner {
     private final UserRepository userRepository;
