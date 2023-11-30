@@ -6,7 +6,6 @@ import java.util.List;
 
 public record PersonDTO(
         String id,
-        String name,
-        List<AccountDTO> accounts
+        String name
 ) {
 }

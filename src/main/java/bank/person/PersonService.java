@@ -51,12 +51,6 @@ public class PersonService {
     }
 
     private PersonDTO mapPersonToPersonDTO(Person person) {
-        return new PersonDTO(person.getUid(), person.getName(), person.getAccounts().stream()
-                .map(this::mapAccountToAccountDTO)
-                .toList());
-    }
-
-    private AccountDTO mapAccountToAccountDTO(Account account) {
-        return new AccountDTO(account.getUid(), account.getIban(), account.getBalance(), account.getPerson().getUid());
+        return new PersonDTO(person.getUid(), person.getName());
     }
 }
