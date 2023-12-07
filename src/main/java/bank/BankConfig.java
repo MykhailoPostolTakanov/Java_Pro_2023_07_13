@@ -8,8 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
 
-@Configuration
-@PropertySource("classpath:application.yml")
+//@Configuration
+//@PropertySource("classpath:application.yml")
 public class BankConfig {
     @Value("${db.serverName}")
     private String serverName;
@@ -20,7 +20,7 @@ public class BankConfig {
     @Value("${db.password}")
     private String password;
 
-    @Bean
+    //@Bean
     public DataSource createDataSource() {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
         dataSource.setServerNames(new String[]{serverName});
