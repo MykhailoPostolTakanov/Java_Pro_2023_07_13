@@ -2,7 +2,3 @@ db.serverName=localhost
 db.dataBaseName=postgres
 db.login=hillel
 db.password=hillel
-
-currency.url=https://api.currencyapi.com/v3/latest?apikey=
-currency.apiKey=cur_live_CtCq96Z5NNZ9wbVt1Vw7qZTVdDr6rFCeweuyv3iX&currencies=
-currency.currencies=EUR%2CUSD%2CUAH
