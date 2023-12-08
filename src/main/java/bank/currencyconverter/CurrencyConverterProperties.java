@@ -14,5 +14,4 @@ import org.springframework.context.annotation.Configuration;
 public class CurrencyConverterProperties {
     private String url;
     private String apiKey;
-    private String currencies;
 }

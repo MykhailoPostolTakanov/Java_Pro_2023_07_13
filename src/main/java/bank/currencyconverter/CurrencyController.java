@@ -1,10 +1,7 @@
 package bank.currencyconverter;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Currency;
 
@@ -14,8 +11,9 @@ import java.util.Currency;
 public class CurrencyController {
     private final CurrencyConverter currencyConverter;
 
-    @GetMapping("/convert/{from}/{to}/{amount}")
-    public double convert(@PathVariable String from, @PathVariable String to, @PathVariable double amount) {
-        return currencyConverter.convert(Currency.getInstance(from), Currency.getInstance(to), amount);
+    @GetMapping("/convert")
+    @ResponseBody
+    public double convert(@RequestParam Currency from, @RequestParam Currency to, @RequestParam double amount) {
+        return currencyConverter.convert(from, to, amount);
     }
 }
