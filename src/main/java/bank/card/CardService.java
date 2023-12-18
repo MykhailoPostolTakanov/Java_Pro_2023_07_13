@@ -24,11 +24,11 @@ public class CardService {
         var account = accountRepository.findByUid(accountUID).orElseThrow(() -> new RuntimeException("Account Not Found!"));
         return mapCardToCardDTO(cardRepository.save(Card.builder()
                 .uid(UUID.randomUUID().toString())
-                .pan(String.valueOf((long) (Math.random() * 10000000000000000L)))
+                .pan(String.format("%03d", (long) (Math.random() * 10000000000000000L)))
                 .account(account)
                 .expirationDate(Instant.now().plus(730, ChronoUnit.DAYS))
-                .pin(String.valueOf((long) (Math.random() * 10000L)))
-                .cvv(String.valueOf((long) (Math.random() * 1000L)))
+                .pin(String.format("%03d", (long) (Math.random() * 10000L)))
+                .cvv(String.format("%03d", (long) (Math.random() * 1000L)))
                 .status(CardStatus.ACTIVE.getStatus())
                 .person(account.getPerson())
                 .build()));
