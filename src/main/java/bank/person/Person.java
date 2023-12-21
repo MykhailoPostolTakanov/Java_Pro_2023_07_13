@@ -1,6 +1,7 @@
 package bank.person;
 
 import bank.account.Account;
+import bank.card.Card;
 import bank.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,4 +21,6 @@ public class Person extends BaseEntity {
     private String name;
     @OneToMany(mappedBy = "person")
     private List<Account> accounts;
+    @OneToMany(mappedBy = "person")
+    private List<Card> cards;
 }

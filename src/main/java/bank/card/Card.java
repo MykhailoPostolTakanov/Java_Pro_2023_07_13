@@ -1,7 +1,7 @@
-package bank.account;
+package bank.card;
 
-import bank.card.Card;
 import bank.entity.BaseEntity;
+import bank.account.Account;
 import bank.person.Person;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,21 +10,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.List;
+import java.time.Instant;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "accounts")
+@Table(name = "cards")
 @EntityListeners(AuditingEntityListener.class)
 @Builder
-public class Account extends BaseEntity {
+public class Card extends BaseEntity {
     private String uid;
-    private String iban;
-    private int balance;
+    private String pan;
     @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
+    private Instant expirationDate;
+    private String pin;
+    private String cvv;
+    private String status;
+    @ManyToOne
+    @JoinColumn(name = "person_id")
     private Person person;
-    @OneToMany(mappedBy = "account")
-    private List<Card> cards;
 }
