@@ -1,5 +1,6 @@
 package bank.account;
 
+import bank.card.CardRepository;
 import bank.person.PersonRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
@@ -20,6 +21,8 @@ public abstract class WebIntegrationTest {
     protected AccountRepository accountRepository;
     @Autowired
     protected PersonRepository personRepository;
+    @Autowired
+    protected CardRepository cardRepository;
     @Autowired
     protected ObjectMapper objectMapper;
     @Autowired
